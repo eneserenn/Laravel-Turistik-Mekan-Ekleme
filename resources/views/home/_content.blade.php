@@ -1,0 +1,5 @@
+@include('home._slider')
+@include('home._grids')
+@include('home._stats')
+@include('home._populars')
+@include('home._testimonals')
