@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin as Admin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +20,11 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('/panel', [Admin\HomeController::class, 'index'])->name("adminhome")->middleware("auth");
+
+Route::get('/panel/login', [Admin\HomeController::class, 'login'])->name("adminlogin");
+Route::get('/panel/logout', [Admin\HomeController::class, 'logout'])->name("adminlogout");
+
+Route::post('/panel/logincheck', [Admin\HomeController::class, 'logincheck'])->name("adminlogincheck");
+
