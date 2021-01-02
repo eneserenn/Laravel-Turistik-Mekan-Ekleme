@@ -28,6 +28,8 @@ Route::middleware('auth')->prefix('panel')->group(function(){
     Route::get('/category', [Admin\CategoryController::class, 'list'])->name("admincategorylist");
     Route::get('/category/add', [Admin\CategoryController::class, 'add'])->name("admincategoryadd");
     Route::post('/category/create', [Admin\CategoryController::class, 'create'])->name("admincategorycreate");
+    Route::get('/category/edit/{id}', [Admin\CategoryController::class, 'edit'])->name("admincategoryedit");
+    Route::post('/category/update/{id}', [Admin\CategoryController::class, 'update'])->name("admincategoryupdate");
     Route::get('/category/destroy/{id}', [Admin\CategoryController::class, 'destroy'])->name("admincategorydestroy");
 });
 

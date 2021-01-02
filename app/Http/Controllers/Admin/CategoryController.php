@@ -67,7 +67,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categories= DB::table('categories')->get()->where('parent_id',0);
+        $edit_category=Category::find($id);
+        return view('admin.home.category_edit',['edit_category'=> $edit_category,'parents'=>$categories]);
     }
 
     /**
@@ -79,7 +81,19 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $edit_category = Category::find($id);
+ 
+      
+        $edit_category->title = $request->title;
+        $edit_category->parent_id = $request->parent_id;
+        $edit_category->keywords = $request->keywords;
+        $edit_category->description = $request->description;
+        $edit_category->slug = $request->slug;
+        $edit_category->status = $request->status;
+        $edit_category->save();
+
+        return redirect(route("admincategorylist"));
+        
     }
 
     /**

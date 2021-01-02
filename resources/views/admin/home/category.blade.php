@@ -51,7 +51,7 @@
                             <td>{{$category->image}}</td>
                             <td>{{$category->slug}}</td>
                             <td>{{$category->status}}</td>
-                            <td>edit</td>
+                            <td><a href="{{route('admincategoryedit',['id'=>$category->id])}}">edit</a></td>
                             <td><a href="{{route('admincategorydestroy',['id'=>$category->id])}}" onclick="return confirm('Delete are you sure')">delete</a> </td>
                         </tr>
                         @endforeach
