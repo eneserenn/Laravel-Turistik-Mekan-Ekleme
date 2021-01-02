@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin as Admin;
+use App\Http\Controllers\Admin\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,10 +22,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/panel', [Admin\HomeController::class, 'index'])->name("adminhome")->middleware("auth");
-
-Route::get('/panel/login', [Admin\HomeController::class, 'login'])->name("adminlogin");
-Route::get('/panel/logout', [Admin\HomeController::class, 'logout'])->name("adminlogout");
+Route::middleware('auth')->prefix('panel')->group(function(){
+    Route::get('/', [Admin\HomeController::class, 'index'])->name("adminhome");
+    Route::get('/logout', [Admin\HomeController::class, 'logout'])->name("adminlogout");
+    Route::get('/category', [Admin\CategoryController::class, 'list'])->name("admincategorylist");
+  
+});
 
 Route::post('/panel/logincheck', [Admin\HomeController::class, 'logincheck'])->name("adminlogincheck");
+Route::get('/panel/login', [Admin\HomeController::class, 'login'])->name("adminlogin");
+
 
