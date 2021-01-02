@@ -3,7 +3,7 @@
 
 <h1>Mekan Ekle</h1>
 <div>
-    <form method="post" action="{{route('adminplaceupdate',['id'=>$editplace->id])}}">
+    <form method="post" action="{{route('adminplaceupdate',['id'=>$editplace->id])}}" enctype="multipart/form-data">
         @csrf
 
         <div class="form-group">
@@ -33,7 +33,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">image</label>
-            <input type="text" class="form-control" placeholder="image" name="image" value="{{$editplace->image}}">
+            <input type="file" class="form-control" name="image" value="{{$editplace->image}}">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">slug</label>

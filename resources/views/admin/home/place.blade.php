@@ -48,7 +48,7 @@
                             <td>{{$place->title}}</td>
                             <td>{{$place->entry_payment}}$</td>
                             <td>{{$place->description}}</td>
-                            <td>{{$place->image}}</td>
+                            <td><img style="width:50px" src="{{asset('storage')}}/{{$place->image}}" alt=""></td>
                             <td>{{$place->country}}</td>
                             <td>{{$place->status}}</td>
                             <td><a href="{{route('adminplaceedit',['id'=>$place->id])}}"><i class="far fa-edit"></i></a></td>

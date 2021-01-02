@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Place;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PlaceController extends Controller
 {
@@ -37,7 +38,7 @@ class PlaceController extends Controller
         $place->title = $request->title;
         $place->keywords = $request->keywords;
         $place->description = $request->description;
-        $place->image = $request->image;
+        $place->image = Storage::putFile('images',$request->image);
         $place->slug = $request->slug;
         $place->detail = $request->detail;
         $place->point = $request->point;
@@ -98,7 +99,7 @@ class PlaceController extends Controller
         $place->title = $request->title;
         $place->keywords = $request->keywords;
         $place->description = $request->description;
-        $place->image = $request->image;
+        $place->image = Storage::putFile('images',$request->image);
         $place->slug = $request->slug;
         $place->detail = $request->detail;
         $place->point = $request->point;
