@@ -24,9 +24,17 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create(Request $request){
+        
+        DB::table('categories')->insert([
+            'title'=> $request->title,
+            'parent_id'=> $request->parent_id,
+            'keywords'=> $request->keywords,
+            'description'=> $request->description,
+            'slug'=> $request->slug,
+            'status'=> $request->status,
+        ]);
+        return redirect(route("admincategorylist"));
     }
 
     /**
@@ -82,10 +90,16 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table("categories")->where("id",$id)->delete();
+        return back();
     }
     public function list(){
         $categories = DB::select('select * from categories');
         return view('admin.home.category',['categories'=>$categories]);
     }
+    public function add(){
+        $parents = DB::table('categories')->get()->where('parent_id',0);
+        return view('admin.home.category_add',['parents'=>$parents]);
+    }
+
 }

@@ -26,7 +26,9 @@ Route::middleware('auth')->prefix('panel')->group(function(){
     Route::get('/', [Admin\HomeController::class, 'index'])->name("adminhome");
     Route::get('/logout', [Admin\HomeController::class, 'logout'])->name("adminlogout");
     Route::get('/category', [Admin\CategoryController::class, 'list'])->name("admincategorylist");
-  
+    Route::get('/category/add', [Admin\CategoryController::class, 'add'])->name("admincategoryadd");
+    Route::post('/category/create', [Admin\CategoryController::class, 'create'])->name("admincategorycreate");
+    Route::get('/category/destroy/{id}', [Admin\CategoryController::class, 'destroy'])->name("admincategorydestroy");
 });
 
 Route::post('/panel/logincheck', [Admin\HomeController::class, 'logincheck'])->name("adminlogincheck");

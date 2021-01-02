@@ -3,10 +3,9 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-        For more information about DataTables, please visit the <a target="_blank"
-            href="https://datatables.net">official DataTables documentation</a>.</p>
+    <h1 class="h3 mb-2 text-gray-800">Kategori Listesi</h1>
+    <p class="mb-4">Kategori Eklemek için tıklayın. <a class="ml-5 btn btn-primary" 
+            href="{{route('admincategoryadd')}}">Kategori Ekle</a></p>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -25,7 +24,8 @@
                             <th>image</th>
                             <th>slug</th>
                             <th>status</th>
-                            <th>islemler</th>
+                            <th>edit</th>
+                            <th>delete</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -37,7 +37,8 @@
                             <th>image</th>
                             <th>slug</th>
                             <th>status</th>
-                            <th>islemler</th>
+                            <th>edit</th>
+                            <th>delete</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -50,7 +51,8 @@
                             <td>{{$category->image}}</td>
                             <td>{{$category->slug}}</td>
                             <td>{{$category->status}}</td>
-                            <td>$320,800</td>
+                            <td>edit</td>
+                            <td><a href="{{route('admincategorydestroy',['id'=>$category->id])}}" onclick="return confirm('Delete are you sure')">delete</a> </td>
                         </tr>
                         @endforeach
                     </tbody>
