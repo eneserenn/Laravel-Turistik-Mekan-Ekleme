@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin as Admin;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PlaceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,15 @@ Route::middleware('auth')->prefix('panel')->group(function(){
     Route::get('/category/edit/{id}', [Admin\CategoryController::class, 'edit'])->name("admincategoryedit");
     Route::post('/category/update/{id}', [Admin\CategoryController::class, 'update'])->name("admincategoryupdate");
     Route::get('/category/destroy/{id}', [Admin\CategoryController::class, 'destroy'])->name("admincategorydestroy");
+
+    Route::prefix("place")->group(function(){
+        Route::get('/', [Admin\PlaceController::class, 'index'])->name("adminplacelist");
+        Route::get('/add', [Admin\PlaceController::class, 'add'])->name("adminplaceadd");
+        Route::post('/create', [Admin\PlaceController::class, 'create'])->name("adminplacecreate");
+        Route::get('/destroy/{id}', [Admin\PlaceController::class, 'destroy'])->name("adminplacedestroy");
+        Route::get('/edit/{id}', [Admin\PlaceController::class, 'edit'])->name("adminplaceedit");
+        Route::post('/update/{id}', [Admin\PlaceController::class, 'update'])->name("adminplaceupdate");
+    });
 });
 
 Route::post('/panel/logincheck', [Admin\HomeController::class, 'logincheck'])->name("adminlogincheck");

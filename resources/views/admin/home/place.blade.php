@@ -3,9 +3,9 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Kategori Listesi</h1>
+    <h1 class="h3 mb-2 text-gray-800">Mekan Listesi</h1>
     <p class="mb-4">Kategori Eklemek için tıklayın. <a class="ml-5 btn btn-primary" 
-            href="{{route('admincategoryadd')}}">Kategori Ekle</a></p>
+            href="{{route('adminplaceadd')}}">Mekan Ekle</a></p>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -17,12 +17,12 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>parent</th>
+                            <th>category</th>
                             <th>title</th>
-                            <th>keywords</th>
+                            <th>ücret</th>
                             <th>description</th>
                             <th>image</th>
-                            <th>slug</th>
+                            <th>ülke</th>
                             <th>status</th>
                             <th>edit</th>
                             <th>delete</th>
@@ -42,17 +42,17 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach($categories as $category)
+                        @foreach($places as $place)
                         <tr>
-                            <td>{{$category->parent_id}}</td>
-                            <td>{{$category->title}}</td>
-                            <td>{{$category->keywords}}</td>
-                            <td>{{$category->description}}</td>
-                            <td>{{$category->image}}</td>
-                            <td>{{$category->slug}}</td>
-                            <td>{{$category->status}}</td>
-                            <td><a href="{{route('admincategoryedit',['id'=>$category->id])}}"><i class="far fa-edit"></i></a></td>
-                            <td><a href="{{route('admincategorydestroy',['id'=>$category->id])}}" onclick="return confirm('Delete are you sure')"><i class="far fa-trash-alt"></i></a> </td>
+                            <td>{{$place->category_id}}</td>
+                            <td>{{$place->title}}</td>
+                            <td>{{$place->entry_payment}}$</td>
+                            <td>{{$place->description}}</td>
+                            <td>{{$place->image}}</td>
+                            <td>{{$place->country}}</td>
+                            <td>{{$place->status}}</td>
+                            <td><a href="{{route('adminplaceedit',['id'=>$place->id])}}"><i class="far fa-edit"></i></a></td>
+                            <td><a href="{{route('adminplacedestroy',['id'=>$place->id])}}" onclick="return confirm('Delete are you sure')"><i class="far fa-trash-alt"></i></a> </td>
                         </tr>
                         @endforeach
                     </tbody>

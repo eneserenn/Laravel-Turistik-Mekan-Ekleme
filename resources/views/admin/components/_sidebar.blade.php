@@ -34,6 +34,12 @@
             <span>Kategoriler</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('adminplacelist')}}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Mekanlar</span>
+        </a>
+    </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
 
