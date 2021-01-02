@@ -48,7 +48,7 @@
                             <td>{{$category->title}}</td>
                             <td>{{$category->keywords}}</td>
                             <td>{{$category->description}}</td>
-                            <td>{{$category->image}}</td>
+                            <td><img style="width:50px" src="{{asset("storage")}}/{{$category->image}}" alt=""></td>
                             <td>{{$category->slug}}</td>
                             <td>{{$category->status}}</td>
                             <td><a href="{{route('admincategoryedit',['id'=>$category->id])}}"><i class="far fa-edit"></i></a></td>

@@ -2,7 +2,7 @@
 @section('content')
 <div style="width:50%">
     <h1>{{$edit_category->title}} Kategorisini Güncelle</h1>
-    <form method="post" action="{{route('admincategoryupdate',['id'=>$edit_category->id])}}">
+    <form method="post" action="{{route('admincategoryupdate',['id'=>$edit_category->id])}}" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="exampleFormControlSelect1">Parent</label>
@@ -27,7 +27,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">image</label>
-            <input type="text" class="form-control" placeholder="image" name="image" value="{{$edit_category->image}}">
+            <input type="file" class="form-control"  name="image" value="{{$edit_category->image}}">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">slug</label>
