@@ -40,7 +40,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">detail</label>
-            <textarea type="text" class="form-control" placeholder="detail" name="detail">
+            <textarea  id="summernote" class="form-control" placeholder="detail" name="detail">
 
             </textarea>
         </div>
@@ -66,4 +66,18 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+@endsection
+@section('headincludes')
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
+@endsection
+
+@section('footerincludes')
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script>
+    
+ $(document).ready(function() {
+        $('#summernote').summernote({height: 200});
+    });
+</script>
 @endsection
