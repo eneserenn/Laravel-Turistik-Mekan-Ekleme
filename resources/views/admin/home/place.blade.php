@@ -46,7 +46,7 @@
                     <tbody>
                         @foreach($places as $place)
                         <tr>
-                            <td>{{$place->category_id}}</td>
+                            <td>{{$place->category->title}}</td>
                             <td>{{$place->title}}</td>
                             <td>{{$place->entry_payment}}$</td>
                             <td>{{$place->description}}</td>

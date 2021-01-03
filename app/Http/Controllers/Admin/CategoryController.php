@@ -89,7 +89,9 @@ class CategoryController extends Controller
         $edit_category->parent_id = $request->parent_id;
         $edit_category->keywords = $request->keywords;
         $edit_category->description = $request->description;
-        $edit_category->image = Storage::putFile('images',$request->image);
+        if ($request->image != null) {
+            $edit_category->image = Storage::putFile('images', $request->image);
+        }
         $edit_category->slug = $request->slug;
         $edit_category->status = $request->status;
         $edit_category->save();

@@ -19,12 +19,12 @@ class PlaceController extends Controller
     public function index()
     {
         $places = Place::get();
-        return view("admin.home.place",['places'=>$places]);
+        return view("admin.home.place", ['places' => $places]);
     }
     public function add()
     {
         $categories = Category::get();
-        return view("admin.home.place_add",['categories'=>$categories]);
+        return view("admin.home.place_add", ['categories' => $categories]);
     }
 
     /**
@@ -39,7 +39,9 @@ class PlaceController extends Controller
         $place->title = $request->title;
         $place->keywords = $request->keywords;
         $place->description = $request->description;
-        $place->image = Storage::putFile('images',$request->image);
+        if ($request->image != null) {
+            $place->image = Storage::putFile('images', $request->image);
+        }
         $place->slug = $request->slug;
         $place->detail = $request->detail;
         $place->point = $request->point;
@@ -80,10 +82,10 @@ class PlaceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   
+    {
         $categories = Category::get();
         $editplace = Place::find($id);
-        return view('admin.home.place_edit',['editplace'=>$editplace,'categories'=>$categories]);
+        return view('admin.home.place_edit', ['editplace' => $editplace, 'categories' => $categories]);
     }
 
     /**
@@ -100,7 +102,9 @@ class PlaceController extends Controller
         $place->title = $request->title;
         $place->keywords = $request->keywords;
         $place->description = $request->description;
-        $place->image = Storage::putFile('images',$request->image);
+        if ($request->image != null) {
+            $place->image = Storage::putFile('images', $request->image);
+        }
         $place->slug = $request->slug;
         $place->detail = $request->detail;
         $place->point = $request->point;
@@ -111,7 +115,7 @@ class PlaceController extends Controller
         $place->save();
         return redirect(route("adminplacelist"));
     }
-  
+
     /**
      * Remove the specified resource from storage.
      *

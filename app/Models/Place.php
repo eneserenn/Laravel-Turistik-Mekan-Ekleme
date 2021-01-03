@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Place extends Model
 {
-    public function getCategory(){
-        
-    }
+    public function category(){
+        return $this->belongsTo(Category::class);
+  }
     use HasFactory;
 }
