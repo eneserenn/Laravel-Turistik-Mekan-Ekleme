@@ -44,12 +44,15 @@ Route::middleware('auth')->prefix('panel')->group(function(){
     });
     Route::prefix("images")->group(function(){
         Route::get('/{id}', [Admin\ImageController::class, 'index'])->name("adminimageslist");
-       
+
         Route::post('/create', [Admin\ImageController::class, 'create'])->name("adminimagescreate");
         Route::get('/destroy/{id}', [Admin\ImageController::class, 'destroy'])->name("adminimagesdestroy");
         Route::get('/edit/{id}', [Admin\ImageController::class, 'edit'])->name("adminimagesedit");
         Route::post('/update/{id}', [Admin\ImageController::class, 'update'])->name("adminimagesupdate");
     });
+
+    Route::get('/setting', [Admin\SettingController::class, 'index'])->name("adminsetting");
+    Route::post('/setting/update', [Admin\SettingController::class, 'update'])->name("adminsettingupdate");
 });
 
 Route::post('/panel/logincheck', [Admin\HomeController::class, 'logincheck'])->name("adminlogincheck");

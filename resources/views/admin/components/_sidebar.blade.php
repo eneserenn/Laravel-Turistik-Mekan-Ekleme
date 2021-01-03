@@ -40,6 +40,12 @@
             <span>Mekanlar</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('adminsetting')}}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Settings</span>
+        </a>
+    </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
 
