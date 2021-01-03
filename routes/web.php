@@ -40,6 +40,15 @@ Route::middleware('auth')->prefix('panel')->group(function(){
         Route::get('/destroy/{id}', [Admin\PlaceController::class, 'destroy'])->name("adminplacedestroy");
         Route::get('/edit/{id}', [Admin\PlaceController::class, 'edit'])->name("adminplaceedit");
         Route::post('/update/{id}', [Admin\PlaceController::class, 'update'])->name("adminplaceupdate");
+       
+    });
+    Route::prefix("images")->group(function(){
+        Route::get('/{id}', [Admin\ImageController::class, 'index'])->name("adminimageslist");
+       
+        Route::post('/create', [Admin\ImageController::class, 'create'])->name("adminimagescreate");
+        Route::get('/destroy/{id}', [Admin\ImageController::class, 'destroy'])->name("adminimagesdestroy");
+        Route::get('/edit/{id}', [Admin\ImageController::class, 'edit'])->name("adminimagesedit");
+        Route::post('/update/{id}', [Admin\ImageController::class, 'update'])->name("adminimagesupdate");
     });
 });
 

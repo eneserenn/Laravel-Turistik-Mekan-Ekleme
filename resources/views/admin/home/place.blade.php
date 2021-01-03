@@ -24,6 +24,7 @@
                             <th>image</th>
                             <th>ülke</th>
                             <th>status</th>
+                            <th>gallery</th>
                             <th>edit</th>
                             <th>delete</th>
                         </tr>
@@ -37,6 +38,7 @@
                             <th>image</th>
                             <th>slug</th>
                             <th>status</th>
+                            <th>gallery</th>
                             <th>edit</th>
                             <th>delete</th>
                         </tr>
@@ -51,6 +53,7 @@
                             <td><img style="width:50px" src="{{asset('storage')}}/{{$place->image}}" alt=""></td>
                             <td>{{$place->country}}</td>
                             <td>{{$place->status}}</td>
+                            <td><a href="{{route('adminimageslist',['id'=>$place->id])}}" onclick="return !window.open(this.href,'','top=50 left=100 width=1100 height=700')"><i class="far fa-images"></i></a></td>
                             <td><a href="{{route('adminplaceedit',['id'=>$place->id])}}"><i class="far fa-edit"></i></a></td>
                             <td><a href="{{route('adminplacedestroy',['id'=>$place->id])}}" onclick="return confirm('Delete are you sure')"><i class="far fa-trash-alt"></i></a> </td>
                         </tr>

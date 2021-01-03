@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Place;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -110,7 +111,7 @@ class PlaceController extends Controller
         $place->save();
         return redirect(route("adminplacelist"));
     }
-
+  
     /**
      * Remove the specified resource from storage.
      *
