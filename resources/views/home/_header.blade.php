@@ -63,7 +63,7 @@ $parentCategories = \App\Http\Controllers\Admin\HomeController::categoryList();
         </div>
         @auth
         <div class="d-flex ">
-          <a href="{{route("myaccount")}}" class="btn btn-link ">{{Auth::user()->name}}</a>
+          <a href="{{route("myuserprofile")}}" class="btn btn-link ">{{Auth::user()->name}}</a>
           <a href="{{route('adminlogout')}}" class="btn btn-link ">Çıkış Yap</a>
         </div>
         @endauth

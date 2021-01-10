@@ -25,14 +25,14 @@ Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
 Route::get('/references', [FrontController::class, 'references'])->name('references');
 
 Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function(){
-    Route::get('/', [UserController::class, 'userprofile'])->name('myaccount');
+    Route::get('/', [UserController::class, 'userprofile'])->name('myuserprofile');
 
 
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
 
 Route::middleware('auth')->prefix('panel')->group(function(){
     Route::get('/', [Admin\HomeController::class, 'index'])->name("adminhome");
