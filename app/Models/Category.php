@@ -7,8 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+    protected $appends=['parent'];
     public function places(){
           return $this->hasMany(Place::class);
+    }
+    public function parent(){
+        return $this->belongsTo(Category::class , 'parent_id');
+    }
+    public function children(){
+        return $this->hasMany(Category::class , 'parent_id');
     }
     use HasFactory;
 }

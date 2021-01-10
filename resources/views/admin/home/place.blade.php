@@ -46,7 +46,7 @@
                     <tbody>
                         @foreach($places as $place)
                         <tr>
-                            <td>{{$place->category->title}}</td>
+                            <td>{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($place->category,$place->category->title)}}</td>
                             <td>{{$place->title}}</td>
                             <td>{{$place->entry_payment}}$</td>
                             <td>{{$place->description}}</td>

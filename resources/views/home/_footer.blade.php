@@ -52,21 +52,17 @@
           </div>
           <div class="d-flex below-section justify-content-between align-items-center pt-4 mt-5">
             <div class="columns text-lg-left text-center">
-              <p>&copy; 2020 Traversal. All rights reserved.Design by <a href="https://w3layouts.com/" target="_blank">
+              <p>&copy; 2020 {{$setting->company}}. All rights reserved.Design by <a href="https://w3layouts.com/" target="_blank">
                 W3Layouts</a>
               </p>
             </div>
             <div class="columns-2 mt-lg-0 mt-3">
               <ul class="social">
-                <li><a href="#facebook"><span class="fa fa-facebook" aria-hidden="true"></span></a>
+                <li><a href="{{$setting->facebook}}" target="_blank"><span class="fa fa-facebook" aria-hidden="true"></span></a>
                 </li>
-                <li><a href="#linkedin"><span class="fa fa-linkedin" aria-hidden="true"></span></a>
+                <li><a href="{{$setting->twitter}}" target="_blank"><span class="fa fa-twitter" aria-hidden="true"></span></a>
                 </li>
-                <li><a href="#twitter"><span class="fa fa-twitter" aria-hidden="true"></span></a>
-                </li>
-                <li><a href="#google"><span class="fa fa-google-plus" aria-hidden="true"></span></a>
-                </li>
-                <li><a href="#github"><span class="fa fa-github" aria-hidden="true"></span></a>
+                <li><a href="{{$setting->instagram}}" target="_blank"><span class="fa fa-instagram" aria-hidden="true"></span></a>
                 </li>
               </ul>
             </div>
@@ -156,7 +152,24 @@
     }
     )	;
    
-	
+
+    $(document).on('click', '.dropdown-menu', function (e) {
+  e.stopPropagation();
+});
+
+// make it as accordion for smaller screens
+if ($(window).width() < 992) {
+  $('.dropdown-menu a').click(function(e){
+    e.preventDefault();
+      if($(this).next('.submenu').length){
+        $(this).next('.submenu').toggle();
+      }
+      $('.dropdown').on('hide.bs.dropdown', function () {
+     $(this).find('.submenu').hide();
+  })
+  });
+}
+
 
   </script>
   <!-- //script for tesimonials carousel slider -->

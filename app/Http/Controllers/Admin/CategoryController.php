@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
+    protected $appends=['getParentsTree'];
     /**
      * Display a listing of the resource.
      *
@@ -18,6 +19,14 @@ class CategoryController extends Controller
     public function index()
     {
         //
+    }
+    public static function getParentsTree($category,$title){
+        if($category->parent_id ==0){
+            return $title;
+        }
+        $parent = Category::find($category->parent_id);
+        $title = $parent -> title . '>' .$title;
+        return CategoryController::getParentsTree($parent,$title);
     }
 
     /**
@@ -33,6 +42,7 @@ class CategoryController extends Controller
             'keywords'=> $request->keywords,
             'description'=> $request->description,
             'slug'=> $request->slug,
+            'image'=>Storage::putFile('images', $request->image),
             'status'=> $request->status,
         ]);
         return redirect(route("admincategorylist"));
@@ -68,7 +78,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $categories= DB::table('categories')->get()->where('parent_id',0);
+        $categories= Category::with('children')->get();
         $edit_category=Category::find($id);
         return view('admin.home.category_edit',['edit_category'=> $edit_category,'parents'=>$categories]);
     }
@@ -112,11 +122,11 @@ class CategoryController extends Controller
         return back();
     }
     public function list(){
-        $categories = DB::select('select * from categories');
+        $categories = Category::with('children')->get();
         return view('admin.home.category',['categories'=>$categories]);
     }
     public function add(){
-        $parents = DB::table('categories')->get()->where('parent_id',0);
+        $parents = Category::with('children')->get();
         return view('admin.home.category_add',['parents'=>$parents]);
     }
 

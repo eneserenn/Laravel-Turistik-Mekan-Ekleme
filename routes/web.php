@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin as Admin;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PlaceController;
+use App\Http\Controllers\FrontController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,8 +17,17 @@ use App\Http\Controllers\Admin\PlaceController;
 |
 */
 
-Route::get('/', function () {
-    return view('home.index');
+
+Route::get('/', [FrontController::class, 'index'])->name('home');
+Route::get('/about-us', [FrontController::class, 'aboutus'])->name('aboutus');
+Route::get('/faq', [FrontController::class, 'faq'])->name('faq');
+Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
+Route::get('/references', [FrontController::class, 'references'])->name('references');
+
+Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function(){
+    Route::get('/', [UserController::class, 'userprofile'])->name('myaccount');
+
+
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

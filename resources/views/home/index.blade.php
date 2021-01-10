@@ -1,9 +1,13 @@
 @extends("layouts.home")
-@section("title","Journey")
-@section("description")
-Türkiyenin en beğenilen Gezi Sitesi
+@section("title")
+{{$setting->title}}
 @endsection
-@section("keywords","Gezi,Trekking,Dagcilik")
+@section("description")
+{{$setting->description}}
+@endsection
+@section("keywords")
+{{$setting->keywords}}
+@endsection
 @section("content")
 @include('home._slider')
 @include('home._grids')

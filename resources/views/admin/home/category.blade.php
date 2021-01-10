@@ -45,7 +45,7 @@
                         @foreach($categories as $category)
                         <tr>
                             <td>{{$category->parent_id}}</td>
-                            <td>{{$category->title}}</td>
+                            <td>{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($category,$category->title)}}</td>
                             <td>{{$category->keywords}}</td>
                             <td>{{$category->description}}</td>
                             <td><img style="width:50px" src="{{asset("storage")}}/{{$category->image}}" alt=""></td>

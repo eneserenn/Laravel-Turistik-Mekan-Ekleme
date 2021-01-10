@@ -9,7 +9,7 @@
             <select class="form-control" name="parent_id">
                 <option value="0">Main Category</option>
                   @foreach($parents as $parent)
-                <option @if($parent->id == $edit_category->parent_id)selected @endif value="{{$parent->id}}">{{$parent->title}}</option>
+                <option @if($parent->id == $edit_category->parent_id)selected @endif value="{{$parent->id}}">{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($parent,$parent->title)}}</option>
                 @endforeach
             </select>
         </div>

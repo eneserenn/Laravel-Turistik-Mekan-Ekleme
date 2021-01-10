@@ -13,7 +13,7 @@
                 @foreach($categories as $category)
                 <option @if ($category->id == $editplace->category_id)
                     selected
-                    @endif value="{{$category->id}}">{{$category->title}}</option>
+                    @endif value="{{$category->id}}">{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($category,$category->title)}}</option>
                 @endforeach
             </select>
         </div>

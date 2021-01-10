@@ -3,13 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+    public static function categoryList(){
+        return Category::where('parent_id','=',0)->with('children')->get();
+    }
     public function index(){
-        return view('admin.home.home',);
+      
+        return view('admin.home.home');
     }
     public function login(){
 
@@ -37,4 +43,5 @@ class HomeController extends Controller
         $request->session()->regenerateToken();
         return redirect("/panel/login");
     }
+  
 }
