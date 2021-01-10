@@ -10,3 +10,6 @@
 </div>
 </section>
 @endsection
+@section('title')
+contact-{{$setting->title}}
+@endsection

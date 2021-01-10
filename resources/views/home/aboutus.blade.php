@@ -132,3 +132,6 @@
   </div>
 </section>
 @endsection
+@section('title')
+hakkımızda-{{$setting->title}}
+@endsection
