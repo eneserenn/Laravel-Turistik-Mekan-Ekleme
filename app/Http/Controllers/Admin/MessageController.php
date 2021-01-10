@@ -1,28 +1,44 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Message;
-use App\Models\Setting;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
 
-class FrontController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function messages()
     {
-        $setting =  Setting::first();
-        return view('home.index',compact('setting'));
+        $messages = Message::get();
+        return view('admin.home.message', compact('messages'));
     }
+    public function messagedelete($id)
+    {
+        Message::find($id)->delete();
+        return redirect()->route('messages')->with('info','başarıyla silindi');
+    }
+    public function messageedit($id)
+    {
+        $message = Message::find($id);
+        $message -> status = "true";
+        $message->save();
+        return view('home.message_detail',compact('message'));
 
+    }
+    public function adminnote(Request $request)
+    {
+        $message = Message::find($request->id);
+        $message -> adminnote = $request->adminnote;
+        $message->save();
+        return redirect()->route('adminmessageedit',['id'=>$request->id])->with('success',"Admin notu eklendi"); 
+
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -88,32 +104,4 @@ class FrontController extends Controller
     {
         //
     }
-    public function aboutus(){
-        $setting = Setting::first();
-        return view('home.aboutus',compact('setting'));
-    }
-    public function references(){
-        $setting = Setting::first();
-        return view('home.references',compact('setting'));
-    }
-    public function contact(){
-        $setting = Setting::first();
-        return view('home.contact',compact('setting'));
-    }
-    public function faq(){
-        $setting = Setting::first();
-        return view('home.faq',compact('setting'));
-    }
-   public function sendMessage(Request $request){
-        $message = new Message;
-        $message->name = $request->name;
-        $message->email = $request->email;
-        $message->phone = $request->phone;
-        $message->subject = $request->subject;
-        $message->message = $request->message;
-        
-        $message->save();
-        Session::flash('message','This is a message');
-        return redirect()->route('contact')->with('success','Mesajınız başarıyla gönderildi');
-   }
 }

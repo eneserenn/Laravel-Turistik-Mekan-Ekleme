@@ -46,6 +46,12 @@
             <span>Settings</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('messages')}}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Mesajlar</span>
+        </a>
+    </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
 

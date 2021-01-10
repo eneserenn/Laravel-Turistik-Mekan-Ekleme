@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PlaceController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MessageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +24,8 @@ Route::get('/about-us', [FrontController::class, 'aboutus'])->name('aboutus');
 Route::get('/faq', [FrontController::class, 'faq'])->name('faq');
 Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
 Route::get('/references', [FrontController::class, 'references'])->name('references');
+
+Route::post('/send/message', [FrontController::class, 'sendMessage'])->name('sendmessage');
 
 Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function(){
     Route::get('/', [UserController::class, 'userprofile'])->name('myuserprofile');
@@ -43,7 +46,10 @@ Route::middleware('auth')->prefix('panel')->group(function(){
     Route::get('/category/edit/{id}', [Admin\CategoryController::class, 'edit'])->name("admincategoryedit");
     Route::post('/category/update/{id}', [Admin\CategoryController::class, 'update'])->name("admincategoryupdate");
     Route::get('/category/destroy/{id}', [Admin\CategoryController::class, 'destroy'])->name("admincategorydestroy");
-
+    Route::get('/messages', [Admin\MessageController::class, 'messages'])->name('messages');
+    Route::get('/message/{id}', [Admin\MessageController::class, 'messagedelete'])->name('adminmessagedelete');
+    Route::get('/message/edit/{id}', [Admin\MessageController::class, 'messageedit'])->name('adminmessageedit');
+    Route::post('/adminnote/save', [Admin\MessageController::class, 'adminnote'])->name('adminnote');
     Route::prefix("place")->group(function(){
         Route::get('/', [Admin\PlaceController::class, 'index'])->name("adminplacelist");
         Route::get('/add', [Admin\PlaceController::class, 'add'])->name("adminplaceadd");
