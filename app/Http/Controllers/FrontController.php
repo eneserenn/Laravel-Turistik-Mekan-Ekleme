@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Message;
+use App\Models\Place;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -20,7 +21,9 @@ class FrontController extends Controller
     public function index()
     {
         $setting =  Setting::first();
-        return view('home.index',compact('setting'));
+        $slider = Place::limit(4)->inRandomOrder()->get();
+
+        return view('home.index', compact('setting', 'slider'));
     }
 
     /**
@@ -88,32 +91,49 @@ class FrontController extends Controller
     {
         //
     }
-    public function aboutus(){
+    public function aboutus()
+    {
         $setting = Setting::first();
-        return view('home.aboutus',compact('setting'));
+        return view('home.aboutus', compact('setting'));
     }
-    public function references(){
+    public function references()
+    {
         $setting = Setting::first();
-        return view('home.references',compact('setting'));
+        return view('home.references', compact('setting'));
     }
-    public function contact(){
+    public function contact()
+    {
         $setting = Setting::first();
-        return view('home.contact',compact('setting'));
+        return view('home.contact', compact('setting'));
     }
-    public function faq(){
+    public function faq()
+    {
         $setting = Setting::first();
-        return view('home.faq',compact('setting'));
+        return view('home.faq', compact('setting'));
     }
-   public function sendMessage(Request $request){
+    public function sendMessage(Request $request)
+    {
         $message = new Message;
         $message->name = $request->name;
         $message->email = $request->email;
         $message->phone = $request->phone;
         $message->subject = $request->subject;
         $message->message = $request->message;
-        
+
         $message->save();
-        Session::flash('message','This is a message');
-        return redirect()->route('contact')->with('success','Mesajınız başarıyla gönderildi');
-   }
+        Session::flash('message', 'This is a message');
+        return redirect()->route('contact')->with('success', 'Mesajınız başarıyla gönderildi');
+    }
+    public function discover(Request $request)
+    {
+        $discover = Place::find($request->id);
+        echo $discover->title;
+    }
+    public function categoryelems($id,$slug)
+    {
+        $setting = Setting::first();
+        $category = Category::find($id);
+        $categoryelems = Place::where('category_id', $id)->get();
+        return view('home.category_elems', compact('categoryelems', 'setting','category'));
+    }
 }

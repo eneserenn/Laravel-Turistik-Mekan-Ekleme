@@ -27,7 +27,7 @@ $parentCategories = \App\Http\Controllers\Admin\HomeController::categoryList();
     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">  Kategoriler  </a>
     <ul class="dropdown-menu">
       @foreach($parentCategories as $category)
-	  <li><a class="dropdown-item" href="#"> {{$category->title}} </a>
+	  <li><a href="{{route('categoryelems',['id'=>$category->id,'slug'=>$category->slug])}}" class="dropdown-item" href="#"> {{$category->title}} </a>
       @if(count($category->children))
       @include('home.categorytree',['children'=>$category->children]) 
 

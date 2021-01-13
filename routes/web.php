@@ -26,7 +26,8 @@ Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
 Route::get('/references', [FrontController::class, 'references'])->name('references');
 
 Route::post('/send/message', [FrontController::class, 'sendMessage'])->name('sendmessage');
-
+Route::post('/discover', [FrontController::class, 'discover'])->name('discover');
+Route::get('/category/{id}/{slug}', [FrontController::class, 'categoryelems'])->name('categoryelems');
 Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function(){
     Route::get('/', [UserController::class, 'userprofile'])->name('myuserprofile');
 
@@ -50,6 +51,7 @@ Route::middleware('auth')->prefix('panel')->group(function(){
     Route::get('/message/{id}', [Admin\MessageController::class, 'messagedelete'])->name('adminmessagedelete');
     Route::get('/message/edit/{id}', [Admin\MessageController::class, 'messageedit'])->name('adminmessageedit');
     Route::post('/adminnote/save', [Admin\MessageController::class, 'adminnote'])->name('adminnote');
+  
     Route::prefix("place")->group(function(){
         Route::get('/', [Admin\PlaceController::class, 'index'])->name("adminplacelist");
         Route::get('/add', [Admin\PlaceController::class, 'add'])->name("adminplaceadd");

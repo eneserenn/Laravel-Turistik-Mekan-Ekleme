@@ -1,15 +1,19 @@
+<ul class="submenu dropdown-menu ">
 @foreach($children as $subcategory)
-<ul class="submenu dropdown-menu">
+
+
     @if(count($subcategory->children))
-    <li><a class="dropdown-item" href=""> {{$subcategory->title}} </a>
+    <li><a href="{{route('categoryelems',['id'=>$subcategory->id,'slug'=>$subcategory->slug])}}" class="dropdown-item" href=""> {{$subcategory->title}} </a>
 
-        @include('home.categorytree',['children'=>$subcategory->children]) 
-    
+        @include('home.categorytree',['children'=>$subcategory->children])
 
-    @else
-    <li><a class="dropdown-item" href=""> {{$subcategory->title}} </a></li>
+
+        @else
+    <li><a href="{{route('categoryelems',['id'=>$subcategory->id,'slug'=>$subcategory->slug])}}" class="dropdown-item" href=""> {{$subcategory->title}}</a></li>
     @endif
 
-</li>
-</ul>
+    </li>
+
+
 @endforeach
+</ul>

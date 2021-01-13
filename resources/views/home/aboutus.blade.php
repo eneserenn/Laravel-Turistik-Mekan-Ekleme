@@ -1,4 +1,4 @@
-@extends('home.index')
+@extends('layouts.home')
 @section('content')
 <section class="w3l-cta4 py-5">
     <div class="container py-lg-5">
