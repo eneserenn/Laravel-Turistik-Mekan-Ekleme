@@ -211,6 +211,6 @@ if ($(window).width() < 992) {
     
   </script>
   <!--//MENU-JS-->
-
+@yield('footerjs')
   <script src="{{asset('assets')}}/js/bootstrap.min.js"></script>
 

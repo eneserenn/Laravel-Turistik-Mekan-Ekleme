@@ -28,6 +28,10 @@ Route::get('/references', [FrontController::class, 'references'])->name('referen
 Route::post('/send/message', [FrontController::class, 'sendMessage'])->name('sendmessage');
 Route::post('/discover', [FrontController::class, 'discover'])->name('discover');
 Route::get('/category/{id}/{slug}', [FrontController::class, 'categoryelems'])->name('categoryelems');
+Route::get('/mekan/{id}/{slug}', [FrontController::class, 'place_detail'])->name('placedetail');
+Route::post('/getproduct', [FrontController::class, 'getproduct'])->name('getproduct');
+Route::get('/user_comments', [FrontController::class, 'usercomments'])->name('usercomments');
+Route::get('/deletecommentuser/{id}', [FrontController::class, 'deletecommentuser'])->name('deletecommentuser');
 Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function(){
     Route::get('/', [UserController::class, 'userprofile'])->name('myuserprofile');
 

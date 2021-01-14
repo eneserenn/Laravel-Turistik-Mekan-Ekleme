@@ -1,6 +1,8 @@
  <!--header-->
- <header id="site-header" class="fixed-top">
+ <header id="site-header" class="fixed-top" style="height:120px">
+   
     <div class="container">
+      
       <nav class="navbar navbar-expand-lg stroke">
         <h1><a class="navbar-brand mr-lg-5" href="{{route('home')}}">
             Traversal
@@ -74,7 +76,21 @@ $parentCategories = \App\Http\Controllers\Admin\HomeController::categoryList();
         </div>
        @endguest
         <!-- //toggle switch for light and dark theme -->
+        
       </nav>
+     
+    </div>
+    <div class="ml-3">
+      <form class="form-inline my-2 my-lg-0" action="{{route('getproduct')}}" method="post">
+        @csrf
+        @livewire('search')
+       
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+     
+      @livewireScripts
+    
     </div>
   </header>
+  
   <!-- //header -->

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Message;
 use App\Models\Place;
+use App\Models\Review;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -20,10 +21,16 @@ class FrontController extends Controller
      */
     public function index()
     {
+        $randomplaces = Place::inRandomOrder()
+            ->limit(8) // here is yours limit
+            ->get();
+            $randomplacestwo = Place::inRandomOrder()
+            ->limit(5) // here is yours limit
+            ->get();
         $setting =  Setting::first();
         $slider = Place::limit(4)->inRandomOrder()->get();
 
-        return view('home.index', compact('setting', 'slider'));
+        return view('home.index', compact('setting', 'slider','randomplaces','randomplacestwo'));
     }
 
     /**
@@ -129,11 +136,34 @@ class FrontController extends Controller
         $discover = Place::find($request->id);
         echo $discover->title;
     }
-    public function categoryelems($id,$slug)
+    public function categoryelems($id, $slug)
     {
         $setting = Setting::first();
         $category = Category::find($id);
         $categoryelems = Place::where('category_id', $id)->get();
-        return view('home.category_elems', compact('categoryelems', 'setting','category'));
+        return view('home.category_elems', compact('categoryelems', 'setting', 'category'));
     }
+    public function place_detail($id,$slug){
+        $setting = Setting::first();
+         $place = Place::find($id);
+         return view('home.place_detail',compact('place','setting'));
+    }
+    public function getproduct(Request $request){
+        $data = Place::where('title',$request->search)->first();
+        return redirect()->route('placedetail',['id'=>$data->id,'slug'=>$data->slug]);
+     
+    }
+    public function usercomments(){
+        $setting = Setting::first();
+        $id = Auth::user()->id;
+        $comms = Review::where('user_id',$id)->get();
+        return view('home.user_comments',compact('comms','setting'));
+     
+    }
+    public function  deletecommentuser($id){
+        $deleted = Review::find($id)->delete();
+        return back();
+     
+    }
+   
 }

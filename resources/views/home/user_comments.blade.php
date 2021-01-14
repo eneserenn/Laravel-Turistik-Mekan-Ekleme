@@ -13,7 +13,30 @@
         <a href={{route('logout')}} class="mt-5">Çıkış yap</a>
       </div>
       <div class="d-flex flex-column col-md-9">
-    @include('profile.show')
+
+<table class="table">
+    <thead>
+      <tr>
+     
+        <th scope="col">Mekan</th>
+        <th scope="col">Konu</th>
+        <th scope="col">Yorum</th>
+        <th scope="col">Sil</th>
+      </tr>
+    </thead>
+    <tbody>
+        @foreach($comms as $com)
+      <tr>
+        <th>{{$com->place->title}}</th>
+        <td>{{$com->subject}}</td>
+        <td>{{$com->review}}</td>
+        <td><a href="{{route('deletecommentuser',['id'=>$com->id])}}">Sil</a></td>
+       
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
+
       </div>
     </div>
    </div>

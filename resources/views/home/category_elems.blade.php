@@ -5,7 +5,7 @@
       <div class="container">
         <h2 class="title">{{$category->title}} </h2>
         <ul class="breadcrumbs-custom-path mt-2">
-          <li><a href="#url">Home</a></li>
+          <li><a href="#">Home</a></li>
           <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> {{$category->title}} </li>
         </ul>
       </div>
@@ -21,9 +21,9 @@
               @foreach($categoryelems as $el)
               <div class="col-lg-4 col-md-4 col-6">
                   <div class="column">
-                      <a href="blog-single.html"><img src="{{asset('storage')}}/{{$el->image}}" alt="" class="img-fluid"></a>
+                      <a href="{{route('placedetail',['id'=>$el->id,'slug'=>$el->slug])}}"><img src="{{asset('storage')}}/{{$el->image}}" alt="" class="img-fluid"></a>
                       <div class="info">
-                          <h4><a href="blog-single.html">{{$el->title}}</a></h4>
+                          <h4><a href="{{route('placedetail',['id'=>$el->id,'slug'=>$el->slug])}}">{{$el->title}}</a></h4>
                           <p>Puan: {{$el->point}} </p>
                           <div class="dst-btm">
                             <h6 class="">Ülke: {{$el->country}} </h6>
