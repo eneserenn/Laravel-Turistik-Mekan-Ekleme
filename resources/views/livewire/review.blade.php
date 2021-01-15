@@ -17,13 +17,13 @@
           @error('review') <span class="text-danger">{{$message}}</span>@enderror
         </div>
         <div class="form-group form-check">
-          <input wire:model="like" type="number" id="exampleCheck1"   class="form-control" >
+         <span>Puanın: </span> <input wire:model="like" type="number" id="exampleCheck1"   class="form-control" >
           @error('like') <span class="text-danger">{{$message}}</span>@enderror
         </div>
-  
+  @auth
         <button type="submit" class="btn btn-primary">Submit</button>
-
+@else
         <span>yorum yapmak için lütfen <a href="{{route('login')}}">kayıt</a> olunuz</span>
-      
+        @endauth
       </form>
 </div>

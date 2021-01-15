@@ -20,7 +20,7 @@
             </div>
             </div>
             <div class="maghny-gd-1 col-lg-6 mt-lg-0 mt-4">
-                <div class="row mt-4">
+                <div class="row mb-4">
                     @else
                     <div class="maghny-gd-1 col-6">
                         <div class="maghny-grid">

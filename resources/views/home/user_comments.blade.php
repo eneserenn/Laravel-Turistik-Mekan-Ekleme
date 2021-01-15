@@ -6,10 +6,10 @@
        <h2 class="mt-5">Kullanıcı Paneli</h2>
        <div class="row">
       <div class="d-flex flex-column col-md-3">
-        <a class="mt-4">Profilim</a>
+        <a href="{{route('myuserprofile')}}" class="mt-4">Profilim</a>
         <a href="{{route('usercomments')}}" class="mt-2">Yorumlarım</a>
-        <a class="mt-2">Paylaştığım Mekanlar</a>
-        <a class="mt-2">Mesajlarım</a>
+        <a href="{{route('sharedplaces')}}" class="mt-2">Paylaştığım Mekanlar</a>
+  
         <a href={{route('logout')}} class="mt-5">Çıkış yap</a>
       </div>
       <div class="d-flex flex-column col-md-9">

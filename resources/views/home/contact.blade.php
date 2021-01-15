@@ -1,5 +1,12 @@
 @extends('layouts.home')
 @section('content')
+<section class="w3l-about-breadcrumb text-left">
+  <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+    <div class="container">
+
+    </div>
+  </div>
+</section>
 <section class="w3l-cta4 py-5">
   <div class="container py-lg-5">
     <div class="row">

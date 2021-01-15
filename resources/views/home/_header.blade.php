@@ -41,7 +41,7 @@ $parentCategories = \App\Http\Controllers\Admin\HomeController::categoryList();
     </ul>
 </li>
 <li class="nav-item"> <a class="nav-link" href="{{route("references")}}"> Referanslar </a></li>
-<li class="nav-item"> <a class="nav-link" href="{{route("faq")}}"> SSS </a></li>
+<li class="nav-item"> <a class="nav-link" href="{{route("faq_front")}}"> SSS </a></li>
 </ul>
         </div>
         <div class="d-lg-block d-none">

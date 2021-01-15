@@ -52,6 +52,18 @@
             <span>Mesajlar</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('reviews')}}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Yorumlar</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('faqlist')}}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>FAQ</span>
+        </a>
+    </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
 

@@ -21,7 +21,6 @@ use App\Http\Controllers\MessageController;
 
 Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::get('/about-us', [FrontController::class, 'aboutus'])->name('aboutus');
-Route::get('/faq', [FrontController::class, 'faq'])->name('faq');
 Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
 Route::get('/references', [FrontController::class, 'references'])->name('references');
 
@@ -32,6 +31,13 @@ Route::get('/mekan/{id}/{slug}', [FrontController::class, 'place_detail'])->name
 Route::post('/getproduct', [FrontController::class, 'getproduct'])->name('getproduct');
 Route::get('/user_comments', [FrontController::class, 'usercomments'])->name('usercomments');
 Route::get('/deletecommentuser/{id}', [FrontController::class, 'deletecommentuser'])->name('deletecommentuser');
+Route::get('/sharedplaces', [FrontController::class, 'sharedplaces'])->name('sharedplaces');
+Route::get('/deleteplaceuser/{id}', [FrontController::class, 'deleteplaceuser'])->name('deleteplaceuser');
+Route::get('/addplaceuser', [FrontController::class, 'addplaceuser'])->name('addplaceuser');
+Route::post('/createplaceuser', [FrontController::class, 'createplaceuser'])->name('createplaceuser');
+Route::get('/editplaceuser/{id}', [FrontController::class, 'editplaceuser'])->name('editplaceuser');
+Route::post('/changeplaceuser', [FrontController::class, 'changeplaceuser'])->name('changeplaceuser');
+Route::get('/faq', [FrontController::class, 'faq'])->name('faq_front');
 Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function(){
     Route::get('/', [UserController::class, 'userprofile'])->name('myuserprofile');
 
@@ -55,6 +61,9 @@ Route::middleware('auth')->prefix('panel')->group(function(){
     Route::get('/message/{id}', [Admin\MessageController::class, 'messagedelete'])->name('adminmessagedelete');
     Route::get('/message/edit/{id}', [Admin\MessageController::class, 'messageedit'])->name('adminmessageedit');
     Route::post('/adminnote/save', [Admin\MessageController::class, 'adminnote'])->name('adminnote');
+    Route::get('/reviews', [Admin\ReviewController::class, 'index'])->name('reviews');
+    Route::get('/reviews/edit/{id}', [Admin\ReviewController::class, 'edit'])->name('reviewedit');
+    Route::post('/reviews/editstatus', [Admin\ReviewController::class, 'editstatus'])->name('editstatus');
   
     Route::prefix("place")->group(function(){
         Route::get('/', [Admin\PlaceController::class, 'index'])->name("adminplacelist");
@@ -63,6 +72,15 @@ Route::middleware('auth')->prefix('panel')->group(function(){
         Route::get('/destroy/{id}', [Admin\PlaceController::class, 'destroy'])->name("adminplacedestroy");
         Route::get('/edit/{id}', [Admin\PlaceController::class, 'edit'])->name("adminplaceedit");
         Route::post('/update/{id}', [Admin\PlaceController::class, 'update'])->name("adminplaceupdate");
+       
+    });
+    Route::prefix("faq")->group(function(){
+        Route::get('/', [Admin\FaqController::class, 'index'])->name("faqlist");
+        Route::get('/add', [Admin\FaqController::class, 'add'])->name("faqadd");
+        Route::post('/create', [Admin\FaqController::class, 'create'])->name("faqcreate");
+        Route::get('/destroy/{id}', [Admin\FaqController::class, 'destroy'])->name("faqdestroy");
+        Route::get('/edit/{id}', [Admin\FaqController::class, 'edit'])->name("faqedit");
+        Route::post('/update/{id}', [Admin\FaqController::class, 'update'])->name("faqupdate");
        
     });
     Route::prefix("images")->group(function(){

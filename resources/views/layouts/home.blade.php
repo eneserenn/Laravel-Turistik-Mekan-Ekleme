@@ -19,6 +19,7 @@
 
 	<link rel="stylesheet" href="{{asset('assets')}}/css/style-starter.css">
 	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+	@yield('home_style')
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 	<style>
 		@media (min-width: 992px) {
