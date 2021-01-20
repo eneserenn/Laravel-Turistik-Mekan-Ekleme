@@ -64,6 +64,12 @@
             <span>FAQ</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('userlist')}}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Users</span>
+        </a>
+    </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
 

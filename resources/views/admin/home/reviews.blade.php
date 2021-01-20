@@ -44,7 +44,7 @@
                     <tbody>
                         @foreach($reviews as $review)
                         <tr>
-                            <td>{{$review->user->name}}</td>
+                            <td><a href="{{route('show_user',['id'=>$review->user->id])}}" onclick="return !window.open(this.href,'','top=50 left=100 width=800,height=600')">{{$review->user->name}}</a></td>
                             <td>{{$review->place->title}}</td>
                             <td>{{$review->subject}}</td>
                             <td>{{$review->review}}</td>

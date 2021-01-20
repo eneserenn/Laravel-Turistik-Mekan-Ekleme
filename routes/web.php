@@ -88,6 +88,21 @@ Route::middleware('auth')->prefix('panel')->group(function () {
             Route::get('/edit/{id}', [Admin\ImageController::class, 'edit'])->name("adminimagesedit");
             Route::post('/update/{id}', [Admin\ImageController::class, 'update'])->name("adminimagesupdate");
         });
+        Route::prefix("users")->group(function () {
+            Route::get('/', [Admin\UserController::class, 'index'])->name("userlist");
+
+            Route::post('/create', [Admin\UserController::class, 'create'])->name("adminimagescreate");
+            Route::get('/destroy/{id}', [Admin\UserController::class, 'destroy'])->name("adminimagesdestroy");
+            Route::get('/edit/{id}', [Admin\UserController::class, 'edit'])->name("adminimagesedit");
+            Route::post('/update/{id}', [Admin\UserController::class, 'update'])->name("adminimagesupdate");
+            Route::get('/userrole/{id}', [Admin\UserController::class, 'user_roles'])->name("admin_user_roles");
+            Route::get('/deleteuserrole/{user_id}/{role_id}', [Admin\UserController::class, 'delete_user_role'])->name("delete_user_role");
+            Route::post('/adduserrole', [Admin\UserController::class, 'add_user_role'])->name("add_user_role");
+            Route::get('/edituser/{id}', [Admin\UserController::class, 'edit_user'])->name("edit_user");
+            Route::post('/updateuser', [Admin\UserController::class, 'update_user'])->name("update_user");
+            Route::get('/deleteuser/{id}', [Admin\UserController::class, 'delete_user'])->name("delete_user");
+            Route::get('/showuser/{id}', [Admin\UserController::class, 'show_user'])->name("show_user");
+        });
 
         Route::get('/setting', [Admin\SettingController::class, 'index'])->name("adminsetting");
         Route::post('/setting/update', [Admin\SettingController::class, 'update'])->name("adminsettingupdate");
