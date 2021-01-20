@@ -9,6 +9,12 @@
           <a href="{{route('myuserprofile')}}" class="mt-4">Profilim</a>
           <a href="{{route('usercomments')}}" class="mt-2">Yorumlarım</a>
           <a href="{{route('sharedplaces')}}" class="mt-2">Paylaştığım Mekanlar</a>
+          @php
+          $userRoles=Auth::user()->roles->pluck('name');
+          @endphp
+          @if($userRoles->contains('admin'))
+          <a href="{{route('adminhome')}}" class="mt-2">Admin Panele Geçiş Yap</a>
+          @endif
           <a href={{route('logout')}} class="mt-5">Çıkış yap</a>
         </div>
         <div class="d-flex flex-column col-md-9">
